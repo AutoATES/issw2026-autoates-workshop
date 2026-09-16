@@ -22,6 +22,7 @@ dependencies:
   - psutil
   - pandas
   - shapely
+  - scikit-image
   - jupyterlab
   - ipywidgets
   - pip

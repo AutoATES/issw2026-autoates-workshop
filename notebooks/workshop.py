@@ -30,14 +30,17 @@ def find_autoates() -> Path:
     found = _first_existing(
         [
             os.environ.get("AUTOATES_ROOT"),
+            REPO.parent / "autoATES-v3.0-issw",
             REPO.parent / "AutoATES-v3.0",
             REPO.parent / "AutoATES" / "AutoATES-v3.0",
+            Path.home() / "Documents" / "Code" / "autoATES-v3.0-issw",
             Path.home() / "Documents" / "Code" / "AutoATES" / "AutoATES-v3.0",
+            Path.home() / "Documents" / "autoATES-v3.0-issw",
             Path.home() / "Documents" / "AutoATES-v3.0",
         ],
         marker="autoates",
     )
-    return found or (REPO.parent / "AutoATES-v3.0")
+    return found or (REPO.parent / "autoATES-v3.0-issw")
 
 
 def find_avaframe() -> Path:

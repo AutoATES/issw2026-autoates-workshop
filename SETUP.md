@@ -61,10 +61,7 @@ mkdir issw-workshop
 cd issw-workshop
 
 git clone https://github.com/AutoATES/issw2026-autoates-workshop.git
-git clone https://github.com/AutoATES/AutoATES-v3.0.git
-cd AutoATES-v3.0
-git checkout adb83f616576
-cd ..
+git clone https://github.com/AutoATES/autoATES-v3.0-issw.git
 
 git clone https://github.com/OpenNHM/AvaFrame.git
 cd AvaFrame
@@ -77,17 +74,17 @@ You should now have:
 ```
 issw-workshop/
   issw2026-autoates-workshop/   ← notebooks and Connaught data
-  AutoATES-v3.0/                ← library
+  autoATES-v3.0-issw/           ← ISSW snapshot of the library
   AvaFrame/                     ← com4FlowPy
 ```
+
+`autoATES-v3.0-issw` is the public ISSW snapshot (default settings =
+the papers). The full development tree stays private.
 
 No git? Download each repository as a ZIP from GitHub (green Code button →
 Download ZIP), unpack, and rename the folders to match the names above.
 Then `git checkout` does not apply — we will help you at the door if the
 default branch is not the pin.
-
-If the workshop GitHub URL is not live yet, use the zip we emailed or the
-USB copy, and still clone AutoATES-v3.0 and AvaFrame as above.
 
 ## 2. Create the conda environment
 
@@ -155,7 +152,7 @@ Operating system:
 
 The folder layout is:
   issw-workshop/issw2026-autoates-workshop
-  issw-workshop/AutoATES-v3.0
+  issw-workshop/autoATES-v3.0-issw
   issw-workshop/AvaFrame
 
 The command I ran:
@@ -183,7 +180,7 @@ Reference outputs were built 16 September 2026 with:
 
 | Package | Source | Pin |
 |---|---|---|
-| AutoATES v3.0 | `github.com/AutoATES/AutoATES-v3.0` | `adb83f616576` |
+| autoATES v3.0 (ISSW snapshot) | `github.com/AutoATES/autoATES-v3.0-issw` | `main` (from private commit `adb83f616576`) |
 | AvaFrame | `github.com/OpenNHM/AvaFrame` | `c745a2dec4a7` |
 | Forest product | Sentinel-2 T11UMS | summer 2024-08-31, winter 2024-03-24 |
 
@@ -194,7 +191,8 @@ Without it, use the reference runout rasters rather than waiting.
 
 - Do not mix this conda env, a system Python, and OSGeo4W in one terminal.
 - Do not `pip install rasterio` or `pip install gdal` on top of conda.
-- Do not clone a random AutoATES working copy with site-batch configs.
-  Use the pin above.
+- Clone **`autoATES-v3.0-issw`**, not a private development working copy
+  with sweep configs. This workshop repo is the lesson; that snapshot is
+  the library.
 - Do not download a new DEM or Sentinel tile for the workshop. Connaught
   is already in `data/`.

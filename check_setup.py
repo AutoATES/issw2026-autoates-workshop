@@ -55,7 +55,7 @@ def main() -> int:
         if not (AUTOATES_ROOT / "autoates").exists():
             raise FileNotFoundError(
                 f"autoates package not found at {AUTOATES_ROOT}. "
-                "Clone AutoATES-v3.0 next to this repo, or set AUTOATES_ROOT."
+                "Clone autoATES-v3.0-issw next to this repo, or set AUTOATES_ROOT."
             )
         import autoates  # noqa: F401
 

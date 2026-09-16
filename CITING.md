@@ -21,8 +21,7 @@ final proceedings citation when available.
 
 ## Software
 
-- autoATES v3.0: `https://github.com/AutoATES/AutoATES-v3.0` (workshop
-  pin in SETUP.md)
+- autoATES v3.0 ISSW snapshot: `https://github.com/AutoATES/autoATES-v3.0-issw`
 - AvaFrame com4FlowPy: D'Amboise et al.; see AvaFrame documentation and
   the pin in SETUP.md
 - ATES v.2 technical model: Statham & Campbell (2025)

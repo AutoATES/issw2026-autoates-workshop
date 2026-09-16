@@ -6,7 +6,7 @@ reference outputs.
 
 ```bash
 cd /path/to/issw2026-autoates-workshop
-export AUTOATES_ROOT=$HOME/Documents/Code/AutoATES/AutoATES-v3.0
+export AUTOATES_ROOT=$HOME/Documents/Code/autoATES-v3.0-issw
 # env with rasterio, geopandas, avaframe, numba
 
 python scripts/clip_connaught_inputs.py

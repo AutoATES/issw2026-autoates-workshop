@@ -1,6 +1,6 @@
 """Run the workshop autoATES config (PRA + Flow-Py + ATES).
 
-Uses AUTOATES_ROOT if set, otherwise the local AutoATES-v3.0 clone.
+Uses AUTOATES_ROOT if set, otherwise a sibling autoATES-v3.0-issw clone.
 Must be launched from the workshop repo root.
 """
 from __future__ import annotations

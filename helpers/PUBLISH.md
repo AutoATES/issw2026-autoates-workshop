@@ -1,5 +1,19 @@
 # Publish this repo before the participant email goes out
 
+Workshop repo is already public:
+https://github.com/AutoATES/issw2026-autoates-workshop
+
+Library snapshot (ISSW defaults, not the development tree):
+https://github.com/AutoATES/autoATES-v3.0-issw
+
+Further pushes:
+
+```bash
+git push
+```
+
+Original notes:
+
 1. Create an empty public repo `AutoATES/issw2026-autoates-workshop`
    (or another org; then fix the clone URL in SETUP.md, README.md, and
    `participant/EMAIL.md`).
