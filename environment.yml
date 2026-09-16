@@ -1,0 +1,26 @@
+# ISSW 2026 autoATES v3.0 workshop environment.
+# Install:  mamba env create -f environment.yml
+#           conda env create -f environment.yml
+#
+# AutoATES v3.0 and AvaFrame are pinned in SETUP.md once a workshop tag exists.
+# Do not install them from a random main branch the night before.
+
+name: autoates-workshop
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - rasterio
+  - geopandas
+  - gdal
+  - numba
+  - matplotlib
+  - pyyaml
+  - tqdm
+  - jupyterlab
+  - ipywidgets
+  - pip
+  - pip:
+    - ipykernel

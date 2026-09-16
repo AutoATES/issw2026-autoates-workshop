@@ -1,0 +1,55 @@
+# Local environments
+.venv/
+venv/
+env/
+autoates_v3_env/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Jupyter / IDE
+.idea/
+.vscode/
+*.swp
+
+# Participant working copies of rasters (keep folder structure, ignore payloads)
+data/**/*.tif
+data/**/*.tiff
+data/**/*.img
+data/**/*.vrt
+data/**/*.gpkg
+data/**/*.shp
+data/**/*.shx
+data/**/*.dbf
+data/**/*.prj
+data/**/*.cpg
+data/**/*.sbn
+data/**/*.sbx
+data/**/*.qix
+data/**/*.xml
+data/**/*.aux.xml
+data/**/*.ovr
+data/**/*.clr
+data/**/*.zip
+data/**/*.kmz
+data/**/*.kml
+data/**/*.nc
+data/**/*.h5
+data/**/*.pkl
+data/**/*.joblib
+data/**/*.npy
+data/**/*.asc
+
+# Keep folder READMEs and gitkeep
+!data/**/README.md
+!data/**/.gitkeep
+
+# Local QGIS projects with absolute paths
+*.qgz
+*.qgs~
+
+# Workshop output written next to notebooks
+notebooks/work/
+outputs/
+run_*/
