@@ -30,8 +30,13 @@ mamba activate autoates-workshop
 
 Use `conda` in place of `mamba` if that is what you have.
 
-Pin AutoATES v3.0 and AvaFrame from [the workshop release notes](#pins)
-once those tags exist. Do not `pip install` a random GitHub main branch.
+Then point Python at the pinned AutoATES clone (see [Pins](#pins)):
+
+```bash
+export AUTOATES_ROOT=/path/to/AutoATES-v3.0
+export PYTHONPATH="$AUTOATES_ROOT:$PYTHONPATH"
+python -c "import autoates, avaframe; print('ok', autoates.__file__)"
+```
 
 ## 2. Download the data zip
 
@@ -51,6 +56,7 @@ With `autoates-workshop` activated:
 
 ```bash
 python -c "import numpy, scipy, rasterio, geopandas, numba, matplotlib, yaml; print('ok')"
+python -c "import autoates, avaframe; print('autoates/avaframe ok')"
 ```
 
 You want `ok` and no traceback. Then:
@@ -75,13 +81,19 @@ are there if you want to peek.
 
 ## Pins
 
-Filled when we tag the workshop snapshot:
+These are the commits the Connaught reference outputs were built with
+(16 September 2026). Tag a workshop snapshot before sending SETUP to
+participants; until then use the hashes.
 
-| Package | Source | Tag / commit |
+| Package | Source | Pin |
 |---|---|---|
-| AutoATES v3.0 | `github.com/AutoATES/AutoATES-v3.0` | *TBD* |
-| AvaFrame (com4FlowPy) | *TBD* | *TBD* |
-| Forest classifier | bundled in the data zip | *TBD* |
+| AutoATES v3.0 | `github.com/AutoATES/AutoATES-v3.0` | `adb83f616576` (`feature/pra-reconciliation-gridsearch`) |
+| AvaFrame (com4FlowPy, numba engine) | local clone of `OpenNHM/AvaFrame` | `c745a2dec4a7` (`master`) |
+| Forest product | Sentinel-2 T11UMS binary + Rogers Pass canopy | summer 2024-08-31, winter 2024-03-24 |
+
+AvaFrame must be importable as `avaframe` (the AutoATES runout step calls
+com4FlowPy in-process). Numba is in `environment.yml` on purpose: it is
+~20× faster than the pure-Python Flow-Py engine.
 
 ## If it fails
 
@@ -95,7 +107,8 @@ Filled when we tag the workshop snapshot:
 
 - Do not install from `environment.yml` *and* a system Python *and* OSGeo4W
   into the same session and hope they share GDAL.
-- Do not clone the full research `AutoATES-v3.0` working tree. This
-  workshop repo is the path.
+- Clone AutoATES-v3.0 **at the pin below**, not a random working copy
+  with sweep configs and site batches. This workshop repo is the lesson
+  path; AutoATES-v3.0 is the library.
 - Do not download ALOS or Sentinel-2 yourself unless you are already
   comfortable with it. The Connaught clips are in the data zip.

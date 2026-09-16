@@ -77,5 +77,6 @@ something people know (Spearhead / Singing Pass / etc.).
 - [ ] Projector laptop has the env, the zip, QGIS styles, and slides offline
 - [ ] AutoATES and AvaFrame pins in SETUP.md are real tags
 - [ ] Flow-Py on the 30 m Connaught clip timed on a mid-range laptop
-      (target: both scenarios inside the 60-minute block with room to look)
+      (desktop numba: 3.4 s for both scenarios — `helpers/TIMING.md`.
+      Re-time Windows + Mac.)
 - [ ] Reference outputs regenerated from those pins, not from a dirty tree

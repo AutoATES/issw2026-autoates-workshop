@@ -114,9 +114,10 @@ Notebook: `04_runout.ipynb`
 BFW-led.
 
 Follow-along: typical runout at alpha 30°, infrequent at 18°. Look at
-travel angle, z-delta, and route-flux. On this 13 km², 30 m grid the run
-should finish in minutes. If it does not, copy the reference outputs and
-look at those.
+travel angle, z-delta, and route-flux. On this 13 km², ~21 m grid both
+Flow-Py scenarios finished in **3.4 s** on a desktop with numba (see
+`helpers/TIMING.md`). If a laptop is still going with 15 minutes left,
+copy the reference outputs and look at those.
 
 Observers: why two alphas; what Flow-Py is (mass-routing, not RAMMS);
 what “reach” means versus intensity.

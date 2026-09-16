@@ -1,7 +1,9 @@
 # Workshop data
 
-Rasters are **not** stored in git. Unpack `connaught_workshop_data.zip`
-from the GitHub Release so that the folders below fill with files.
+Rasters are **not** stored in git. Maintainers: `scripts/clip_connaught_inputs.py`,
+`scripts/run_pipeline.py`, `scripts/stage_reference_outputs.py`, then
+`scripts/pack_data_zip.py`. Participants unpack `connaught_workshop_data.zip`
+so that the folders below fill with files.
 
 ## Live bundle (required)
 
@@ -11,8 +13,8 @@ Connaught Creek AOI, ~13 km², production stack.
 |---|---|---|
 | `aoi/` | Connaught Creek polygon | — |
 | `00_orientation/` | Finished ATES map + expert overlay for the opening | same |
-| `01_elevation/` | ALOS AW3D30 clip | slope, hillshade |
-| `02_forest/` | Sentinel-2 summer/winter clips + pretrained model | binary conifer, canopy cover, gap area |
+| `01_elevation/` | ALOS AW3D30 clip | aligned DEM, slope |
+| `02_forest/` | T11UMS binary, NDVI/NDSI, 13-band stack, production canopy | aligned canopy |
 | `03_pra/` | aligned DEM + canopy | typical and infrequent PRA rasters/polygons |
 | `04_runout/` | PRA + DEM | Flow-Py typical (α 30°) and infrequent (α 18°) |
 | `05_ates/` | PRA + runout + forest + slope | classified ATES raster, colourized |

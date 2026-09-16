@@ -13,5 +13,6 @@ how to copy `data/<step>/outputs_reference/` if that step failed.
 | 05 | `05_ates.ipynb` | Classifier | Light |
 | 06 | `06_takehome.ipynb` | Home range, South Coast preview | No live second AOI |
 
-These files are **outlines** until the data bundle and software pins exist.
-Do not expect them to execute end-to-end today.
+Notebooks 00–06 are wired to the Connaught bundle and `notebooks/workshop.py`.
+Run from the `notebooks/` directory with `AUTOATES_ROOT` set (see SETUP.md).
+Each one still has a checkpoint path if a live call fails.
