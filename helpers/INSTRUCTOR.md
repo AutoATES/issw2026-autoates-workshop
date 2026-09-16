@@ -44,8 +44,10 @@ checkpoint, then sit down. Take names for lunch.
 
 One person owns the projector. They run the notebook (or show the
 reference GeoTIFFs) on a known-good machine. Laptops are a chorus, not
-the source of truth. If Jupyter dies on the projector, fall back to QGIS
-with the reference outputs. Have that QGIS project open before 09:00.
+the source of truth. If Jupyter dies on the projector, fall back to
+`slides/ISSW2026_autoATES_workshop_observer.pptx` (PDF sibling in the
+same folder) or QGIS with `qgis/LOAD.md`. Have the deck and QGIS open
+before 09:00.
 
 ## Data the room will actually see
 

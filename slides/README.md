@@ -1,20 +1,31 @@
-# Observer slides
+# Observer / projector deck
 
-PDF deck that tracks the notebooks, for people who are not on a laptop
-and as the projector fallback if Jupyter dies.
+`ISSW2026_autoATES_workshop_observer.pptx` — 12 slides, 16:9-wide
+(13.3 × 7.5 in). Same maps as the notebooks. Talking-point copy is off
+the rasters; speaker notes are on the slides.
 
-One section per module, same titles as [SCHEDULE.md](../SCHEDULE.md):
+PDF sibling is the Jupyter-died fallback.
 
-0. Finished Connaught map + pipeline
-1. 30 m surface, canopy-top bias
-2. Summer/winter Sentinel-2, cover vs gap
-3. Typical vs infrequent PRA
-4. Flow-Py, alpha 30 / 18
-5. Floors then averaging
-6. Take-home and South Coast preview
+| Slide | Module |
+|---|---|
+| 1 | Title |
+| 2 | Two tracks |
+| 3 | Pipeline |
+| 4 | Finished ATES map |
+| 5 | Elevation |
+| 6–7 | Forest |
+| 8 | PRA typical / infrequent |
+| 9 | Runout α 30 / 18 |
+| 10–11 | ATES classifier |
+| 12 | Take-home |
 
-Keep talking-point copy off the maps. The maps have to read from the
-back of the Peak Room.
+Rebuild after changing maps:
 
-The deck is not in git until it exists. Export a PDF here and keep the
-editable source next to it (pptx or whatever we build it in).
+```bash
+python scripts/make_slide_figures.py
+cd slides && node build_observer_deck.js
+```
+
+`build_observer_deck.js` requires `pptxgenjs` (the comparison-repo
+`paper/poster/node_modules` path is hardcoded until this repo has its
+own install).

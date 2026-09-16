@@ -70,7 +70,8 @@ notebooks/                 00–06, run in order
 data/<step>/inputs/        what that step needs
 data/<step>/outputs_reference/   known-good result if you skip or stall
 config/                    workshop autoATES + Flow-Py settings
-qgis/                      ATES colour ramp
+qgis/                      ATES colour ramp + day-of load order
+slides/                    observer / projector deck (pptx + pdf)
 participant/               email to send
 helpers/                   instructor notes
 ```
