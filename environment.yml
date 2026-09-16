@@ -2,8 +2,8 @@
 # Install:  mamba env create -f environment.yml
 #           conda env create -f environment.yml
 #
-# AutoATES v3.0 and AvaFrame are pinned in SETUP.md once a workshop tag exists.
-# Do not install them from a random main branch the night before.
+# Geospatial stack from conda-forge. AutoATES and AvaFrame are cloned
+# separately (see SETUP.md) so Windows does not have to compile AvaFrame.
 
 name: autoates-workshop
 channels:
@@ -19,6 +19,9 @@ dependencies:
   - matplotlib
   - pyyaml
   - tqdm
+  - psutil
+  - pandas
+  - shapely
   - jupyterlab
   - ipywidgets
   - pip

@@ -14,12 +14,54 @@ from matplotlib.colors import ListedColormap
 REPO = Path(__file__).resolve().parents[1]
 DATA = REPO / "data"
 OUT = REPO / "outputs" / "connaught"
-AUTOATES_ROOT = Path(
-    os.environ.get("AUTOATES_ROOT", Path.home() / "Documents/Code/AutoATES/AutoATES-v3.0")
-).expanduser()
 
-if str(AUTOATES_ROOT) not in sys.path:
-    sys.path.insert(0, str(AUTOATES_ROOT))
+
+def _first_existing(candidates, marker: str) -> Path | None:
+    for raw in candidates:
+        if not raw:
+            continue
+        p = Path(raw).expanduser().resolve()
+        if (p / marker).exists():
+            return p
+    return None
+
+
+def find_autoates() -> Path:
+    found = _first_existing(
+        [
+            os.environ.get("AUTOATES_ROOT"),
+            REPO.parent / "AutoATES-v3.0",
+            REPO.parent / "AutoATES" / "AutoATES-v3.0",
+            Path.home() / "Documents" / "Code" / "AutoATES" / "AutoATES-v3.0",
+            Path.home() / "Documents" / "AutoATES-v3.0",
+        ],
+        marker="autoates",
+    )
+    return found or (REPO.parent / "AutoATES-v3.0")
+
+
+def find_avaframe() -> Path:
+    """Directory that contains the `avaframe` Python package."""
+    found = _first_existing(
+        [
+            os.environ.get("AVAFRAME_ROOT"),
+            REPO.parent / "AvaFrame",
+            REPO.parent / "AvaFrame" / "AvaFrame",
+            Path.home() / "Documents" / "Code" / "AvaFrame" / "AvaFrame",
+            Path.home() / "Documents" / "AvaFrame",
+        ],
+        marker="avaframe",
+    )
+    return found or (REPO.parent / "AvaFrame")
+
+
+AUTOATES_ROOT = find_autoates()
+AVAFRAME_ROOT = find_avaframe()
+
+for _root in (AUTOATES_ROOT, AVAFRAME_ROOT):
+    s = str(_root)
+    if s not in sys.path:
+        sys.path.insert(0, s)
 
 ATES_HEX = {
     0: "#ffffff",

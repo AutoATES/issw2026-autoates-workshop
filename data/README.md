@@ -1,9 +1,10 @@
 # Workshop data
 
-Rasters are **not** stored in git. Maintainers: `scripts/clip_connaught_inputs.py`,
-`scripts/run_pipeline.py`, `scripts/stage_reference_outputs.py`, then
-`scripts/pack_data_zip.py`. Participants unpack `connaught_workshop_data.zip`
-so that the folders below fill with files.
+The Connaught bundle is **in git** (`data/`). Clone the repo and the
+rasters come with it. Maintainers regenerate with
+`scripts/clip_connaught_inputs.py`, `scripts/run_pipeline.py`,
+`scripts/stage_reference_outputs.py`. USB spare:
+`python scripts/pack_data_zip.py`.
 
 ## Live bundle (required)
 

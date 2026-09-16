@@ -1,7 +1,8 @@
 # Maintainer scripts
 
-Participant path is the notebooks. These scripts build the Connaught data
-bundle and regenerate reference outputs.
+Participants run `python check_setup.py` at the repo root, then the
+notebooks. These scripts build the Connaught data bundle and regenerate
+reference outputs.
 
 ```bash
 cd /path/to/issw2026-autoates-workshop

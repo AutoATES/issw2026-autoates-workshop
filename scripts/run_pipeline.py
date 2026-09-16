@@ -10,10 +10,11 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-DEFAULT_AUTOATES = Path.home() / "Documents/Code/AutoATES/AutoATES-v3.0"
-AUTOATES_ROOT = Path(os.environ.get("AUTOATES_ROOT", DEFAULT_AUTOATES)).expanduser()
+sys.path.insert(0, str(REPO / "notebooks"))
+from workshop import AUTOATES_ROOT, AVAFRAME_ROOT  # noqa: E402
 
 sys.path.insert(0, str(AUTOATES_ROOT))
+sys.path.insert(0, str(AVAFRAME_ROOT))
 
 from autoates.comAutoATES.comAutoATES import runAutoATES, load_config  # noqa: E402
 
@@ -23,6 +24,7 @@ def main() -> None:
     cfg_path = REPO / "config" / "autoATESCfg_workshop.ini"
     cfg = load_config(cfg_path)
     print(f"AUTOATES_ROOT={AUTOATES_ROOT}")
+    print(f"AVAFRAME_ROOT={AVAFRAME_ROOT}")
     print(f"config={cfg_path}")
     print(f"working_dir={cfg['General']['working_dir']}")
     result = runAutoATES(config=cfg, config_path=cfg_path)

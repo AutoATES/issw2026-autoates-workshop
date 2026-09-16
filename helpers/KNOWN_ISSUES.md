@@ -1,7 +1,11 @@
 # Known setup issues
 
 Add to this list as helpers actually hit things. Participants only need
-SETUP.md unless an instructor points them here.
+SETUP.md unless an instructor points them here. Windows/macOS have not
+been walked on hardware yet — paste real failures here after that pass.
+
+Install errors: SETUP.md has a prompt to paste into ChatGPT / Claude /
+Copilot / Grok. Prefer that for PATH and conda; prefer a helper for GIS.
 
 ## Windows + GDAL
 

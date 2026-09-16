@@ -72,9 +72,10 @@ Helpers catch up laptops. Jump-ahead people can start the forest notebook.
 
 Notebook: `02_forest.ipynb`
 
-Follow-along: apply a **pretrained** classifier to bundled summer and winter
-Sentinel-2 for the Connaught tile. Produce binary conifer, canopy cover
-(3×3 neighbourhood), and gap area. We do not train a model in the room.
+Follow-along: start from the operational Sentinel-2 binary conifer layer
+for the Connaught tile (summer + winter already classified). Compute
+canopy cover (3×3 neighbourhood) and gap area. We do not train a model
+in the room.
 
 Observers:
 
@@ -172,7 +173,7 @@ Notebook: `06_takehome.ipynb` (skim, do not run a second AOI)
 2. Flow-Py hangs or is slow → classifier gets squeezed. Mitigation:
    reference outputs, BFW on this block, 30 m Connaught only.
 3. Forest notebook tries to become a remote-sensing course. Mitigation:
-   pretrained model, 85 minutes is apply-and-interpret, not train.
+   operational binary layer is bundled; 85 minutes is canopy + gap, not train.
 
 If the room is behind at lunch, cut the live DEM demo (already optional)
 before you cut PRA, Flow-Py, or the classifier.
