@@ -1,41 +1,46 @@
 # ISSW 2026 workshop: autoATES v3.0
 
-Hands-on tutorial for producing automated Avalanche Terrain Exposure Scale
+A full-day tutorial on producing automated Avalanche Terrain Exposure Scale
 (autoATES) maps with open-source tools.
 
 - **When:** Saturday 3 October 2026, 09:00–16:00
 - **Where:** Aava Hotel, Peak Room, Whistler, BC
-- **Who:** Practitioners, researchers, and consultants. Follow along on a
-  laptop, or sit and watch — both tracks are first-class.
+- **Who:** Practitioners, researchers, and consultants. You can run the
+  notebooks on a laptop, or follow the same maps on the projector.
 
 This repository is the participant kit: notebooks, the Connaught Creek
-dataset, step-by-step reference outputs, and the schedule. It is **not**
-the research tree used to build the western Canada production maps.
+dataset, reference outputs for each step, and the schedule. It is separate
+from the research tree used to build the western Canada production maps.
 
-**Start here if you want to follow along:** [SETUP.md](SETUP.md)  
-**Start here if you want the day plan:** [SCHEDULE.md](SCHEDULE.md)  
-**Email we send to participants:** [participant/EMAIL.md](participant/EMAIL.md)
+**If you want to run the models:** start with [SETUP.md](SETUP.md).  
+**If you want the day plan:** [SCHEDULE.md](SCHEDULE.md).  
+**Email to participants:** [participant/EMAIL.md](participant/EMAIL.md).
 
-## Two tracks
+## Following along or watching
 
-| | Follow along | Observe |
+The room is set up for both. The projector shows the same maps as the
+notebooks. If you are on a laptop and a step does not finish, copy that
+module’s `outputs_reference/` folder and continue with the group — those
+files are there so a stalled run does not put you behind.
+
+| | On a laptop | Watching |
 |---|---|---|
-| Laptop | Python 3.11 environment + QGIS | Optional. Maps are on the projector. |
-| What you do | Run the notebook for the current module | Listen, look at the maps, ask questions |
-| If you get stuck | Copy that step's `outputs_reference/` and continue | Stay with the room |
-| You leave with | A Connaught Creek ATES map you produced (or assembled) | The method, the design choices, and where to get the code |
+| Software | Python 3.11 environment + QGIS | Optional |
+| During the day | Run the notebook for the current module | Same maps on the projector; questions welcome |
+| If a step fails | Copy `outputs_reference/` and go on | Stay with the discussion |
+| You leave with | A Connaught Creek ATES map you produced or assembled | The method, the design choices, and where to get the code |
 
-Helpers will not stop the room for one laptop. Jumping ahead with
-reference outputs is the intended recovery path.
+Colleagues from SFU and BFW will be in the room to help with installs
+and with the Flow-Py block.
 
 ## Live site: Connaught Creek
 
-The live domain is **Connaught Creek, Rogers Pass** (13 km²) — the held-out
-comparison drainage from the ISSW talks, small enough that Flow-Py finishes
-on a laptop.
+We will map **Connaught Creek, Rogers Pass** (13 km²). It is the held-out
+comparison drainage from the ISSW talks, and small enough that Flow-Py
+finishes on a laptop.
 
-We use the **production data stack**, not the 5 m lidar from the
-multi-agency comparison:
+We use the production data stack, not the 5 m lidar from the multi-agency
+comparison:
 
 - ALOS AW3D30 (~30 m surface; ~21 m on this projected clip)
 - Sentinel-2 forest (operational binary layer, then canopy cover and gap area)
@@ -43,28 +48,32 @@ multi-agency comparison:
 - com4FlowPy runout at alpha 30° (typical) and 18° (infrequent)
 - autoATES v3.0 classifier
 
-On a desktop with numba, the full chain on this clip takes about **5 seconds**.
-Laptops will be slower; reference outputs are in `data/<step>/outputs_reference/`
-if a step does not finish.
+On a desktop with numba, the full chain on this clip takes about 5 seconds.
+Laptops will be slower. Reference outputs are in
+`data/<step>/outputs_reference/` if a step does not finish.
 
-## Before you arrive
+## Before Saturday
 
-1. Follow [SETUP.md](SETUP.md): Miniforge, QGIS, three git clones, `conda env create`.
-2. Run `python check_setup.py` and get all `OK` lines.
-3. Skim [SCHEDULE.md](SCHEDULE.md). The papers are optional.
+1. Follow [SETUP.md](SETUP.md): Miniforge, QGIS, three git clones, and
+   `conda env create`.
+2. Run `python check_setup.py` and check that the lines print `OK`.
+3. Skim [SCHEDULE.md](SCHEDULE.md). The papers are optional background.
 
-If the install fails, come anyway. Sit on the observe track. You can paste
-the error into ChatGPT / Claude / Copilot / Grok using the prompt in SETUP.md,
-and helpers will be in the room from 08:15.
+If the install is still giving you trouble, please still come. You will
+see every step on the projector, and you can run the notebooks later from
+this repository. SETUP.md includes a prompt you can paste into ChatGPT,
+Claude, Copilot, or Grok for PATH / conda / GDAL errors. Helpers will be
+in the Peak Room from 08:15, and we will have USB copies of the folders.
 
-Conference wifi is not a plan. Bring the repo on disk. USB copies will be
-at the door.
+Conference networks are often slow with a few dozen people downloading
+the same packages. Please get the three folders onto disk before you
+travel if you can.
 
 ## Repository layout
 
 ```
-check_setup.py             pass/fail for the environment
-SETUP.md                   install, including a beginner conda walkthrough
+check_setup.py             environment check
+SETUP.md                   install, including a short conda walkthrough
 SCHEDULE.md                Saturday timetable
 notebooks/                 00–06, run in order
 data/<step>/inputs/        what that step needs
@@ -73,7 +82,7 @@ config/                    workshop autoATES + Flow-Py settings
 qgis/                      ATES colour ramp + day-of load order
 slides/                    observer / projector deck (pptx + pdf)
 participant/               email to send
-helpers/                   instructor notes
+helpers/                   notes for instructors
 ```
 
 ## Citation

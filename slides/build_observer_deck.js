@@ -101,7 +101,7 @@ async function main() {
       x: 0.7, y: 3.05, w: 12, h: 0.45,
       fontFace: "Calibri", fontSize: 22, color: "E8EEF0", margin: 0,
     });
-    s.addText("Follow along on a laptop, or sit and watch. Both tracks are first-class.", {
+    s.addText("You can run the notebooks on a laptop, or follow the same maps on the projector.", {
       x: 0.7, y: 5.55, w: 12, h: 0.35,
       fontFace: "Calibri", fontSize: 16, color: "A8C0CC", margin: 0,
     });
@@ -121,9 +121,9 @@ async function main() {
       fontFace: "Calibri", fontSize: 28, bold: true, color: C.ink, margin: 0,
     });
     const cards = [
-      { x: 0.5, title: "Follow along", body: "Run the notebook for the current module. Python 3.11 + QGIS. If a step fails, copy that folder’s outputs_reference and continue." },
-      { x: 4.7, title: "Observe", body: "Same maps on this screen. No laptop required. You leave with the method, the design choices, and where to get the code." },
-      { x: 8.9, title: "Jump ahead", body: "data/<step>/outputs_reference/ is the recovery path. Helpers will not stop the room for one laptop." },
+      { x: 0.5, title: "On a laptop", body: "Run the notebook for the current module (Python 3.11 + QGIS). If a step stalls, copy that folder’s outputs_reference and continue with the group." },
+      { x: 4.7, title: "Watching", body: "The same maps are on this screen. A laptop is optional. You leave with the method, the design choices, and where to get the code." },
+      { x: 8.9, title: "If a step stalls", body: "data/<step>/outputs_reference/ lets you stay with the room. Helpers will keep the day moving so the afternoon still fits." },
     ];
     for (const c of cards) {
       s.addShape(pres.shapes.RECTANGLE, {
@@ -139,7 +139,7 @@ async function main() {
         fontFace: "Calibri", fontSize: 16, color: C.ink, margin: 0,
       });
     }
-    s.addText("Helpers from 08:15. USB copies at the door. Conference wifi is not a plan.", {
+    s.addText("Helpers from 08:15, with USB copies. Please download the folders before Saturday if you can — conference wifi is often slow.", {
       x: 0.5, y: 5.3, w: 12.3, h: 0.4,
       fontFace: "Calibri", fontSize: 16, color: C.mute, margin: 0,
     });
@@ -189,7 +189,7 @@ async function main() {
       fontFace: "Calibri", fontSize: 16, color: C.ink, margin: 0,
     });
     footer(s, 3, N);
-    s.addNotes("Typical vs infrequent is the v3.0 design. Do not retune class thresholds live.");
+    s.addNotes("Typical vs infrequent is the v3.0 design. Keep the ISSW thresholds for this session.");
   }
 
   // 4 Finished map
@@ -234,7 +234,7 @@ async function main() {
     title: "Typical is tighter. Infrequent picks up start zones below 30°.",
     name: "pra_two_scenarios",
     page: 8, n: N,
-    note: "Published v2 sits on the calibration envelope. Do not retune thresholds live.",
+    note: "Published v2 sits on the calibration envelope. Keep the ISSW thresholds for this session.",
   });
 
   // 9 Runout
@@ -319,7 +319,7 @@ async function main() {
         fontFace: "Calibri", fontSize: 18, color: "E8EEF0", margin: 0,
       });
     });
-    s.addNotes("Do not start a second live AOI. South Coast is QGIS-only if the extra zip is present.");
+    s.addNotes("We will not start a second live AOI. South Coast is QGIS-only if that extra is present.");
   }
 
   const out = path.join(__dirname, "ISSW2026_autoATES_workshop_observer.pptx");

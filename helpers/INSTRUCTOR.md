@@ -35,7 +35,8 @@ Say this out loud at 09:00 and again after lunch:
 
 > If your laptop is not on the current step, copy that folder's
 > `outputs_reference/` into your working outputs and open the next
-> notebook. That is how the workshop is built. You are not behind.
+> notebook. Those files are there so a stalled step does not put you
+> behind.
 
 Helpers: do not re-install conda during a science block. Offer the
 checkpoint, then sit down. Take names for lunch.

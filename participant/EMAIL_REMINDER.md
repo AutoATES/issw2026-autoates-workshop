@@ -14,9 +14,10 @@ If you planned to follow along on a laptop, please run
 before you travel. SETUP.md is in the repo:
 https://github.com/AutoATES/issw2026-autoates-workshop
 
-If that script is still failing, come anyway and watch. Helpers are in
-the room from 08:15 with USB copies of the repo. Do not count on hotel
-wifi to finish an install.
+If that script is still failing, please still come — you can follow on
+the projector. Helpers will be in the room from 08:15 with USB copies.
+Conference wifi is often too slow to finish a conda install on the
+morning.
 
 Timetable is in SCHEDULE.md (welcome 09:00, forest until lunch, PRA /
 Flow-Py / ATES in the afternoon).

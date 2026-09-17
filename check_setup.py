@@ -111,8 +111,8 @@ def main() -> int:
         print("  jupyter lab notebooks/00_orientation.ipynb")
         print("Pick the kernel named 'autoATES workshop' if you see more than one.")
         return 0
-    print("One or more checks failed. See SETUP.md (and the AI prompt there).")
-    print("You can still come and watch — this does not block the observe track.")
+    print("One or more checks failed. See SETUP.md (including the AI prompt there).")
+    print("You are still welcome on Saturday — the projector follows the same maps.")
     return 1
 
 

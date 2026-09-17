@@ -4,13 +4,14 @@ Saturday 3 October 2026, 09:00–16:00
 Aava Hotel, Peak Room, Whistler
 
 Clock time is seven hours. After lunch and two breaks that is about
-**5.5 hours of teaching**. Setup is not a session: it happens before the
-workshop, or at the door from 08:15.
+**5.5 hours of teaching**. We ask people to install software before
+Saturday so the morning can stay on the mapping. Helpers will be at the
+door from 08:15.
 
-Two tracks share the room. Follow-along people run the notebook for the
-current module. Observers watch the same maps on the projector. Helpers
-do not pause the narrative for one laptop — use `outputs_reference/` and
-rejoin.
+People on laptops run the notebook for the current module. Everyone else
+watches the same maps on the projector. If a laptop step stalls, copy
+`outputs_reference/` and rejoin — helpers will keep the room moving so
+the afternoon still fits.
 
 ## Staffing
 
@@ -26,10 +27,11 @@ Helpers should have run every notebook on their own laptop the week before.
 
 ## 08:15–09:00 — Door (not a session)
 
-Last-mile environment check. USB copies of the repo + data zip. Local
-hotspot if the hotel wifi is down. Success is: `conda activate autoates-workshop`
-and the pass/fail import in [SETUP.md](SETUP.md). People who are not ready
-sit on the observe track and try again at lunch.
+Last-mile environment check. USB copies of the repo. Local hotspot if
+the hotel network is down. Success is: `conda activate autoates-workshop`
+and `python check_setup.py` in [SETUP.md](SETUP.md). If someone is still
+installing at 09:00, they are welcome to follow on the projector and try
+again at lunch.
 
 ## Morning — inputs, and why they look like this
 
@@ -124,8 +126,8 @@ Observers: why two alphas; what Flow-Py is (mass-routing, not RAMMS);
 what “reach” means versus intensity.
 
 **Checkpoint.** `data/04_runout/outputs_reference/`  
-This is the step most likely to fail on a laptop. Jumping ahead here is
-normal.
+This is the step most likely to stall on a laptop. Using the reference
+rasters here is expected.
 
 ### 14:50–15:05 — Break
 
@@ -168,8 +170,8 @@ Notebook: `06_takehome.ipynb` (skim, do not run a second AOI)
 
 ## Timing risks, in order
 
-1. Morning treated as install lab → afternoon starts late. Mitigation: door
-   at 08:15, observe track, USB.
+1. Morning treated as install lab → afternoon starts late. Mitigation:
+   door at 08:15, projector for people still installing, USB.
 2. Flow-Py hangs or is slow → classifier gets squeezed. Mitigation:
    reference outputs, BFW on this block, 30 m Connaught only.
 3. Forest notebook tries to become a remote-sensing course. Mitigation:
