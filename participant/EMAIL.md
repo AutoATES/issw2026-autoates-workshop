@@ -1,13 +1,5 @@
 # Participant email
 
-Send about three weeks before 3 October. The week-of reminder is
-[EMAIL_REMINDER.md](EMAIL_REMINDER.md). The GitHub repo already contains
-the Connaught data, so there is no need to attach a zip.
-
-Copy from the line below.
-
----
-
 Subject: ISSW Saturday 3 Oct — autoATES workshop
 
 Hello,
