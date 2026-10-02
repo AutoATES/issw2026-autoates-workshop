@@ -3,7 +3,10 @@
 #           conda env create -f environment.yml
 #
 # Geospatial stack from conda-forge. AutoATES and AvaFrame are cloned
-# separately (see SETUP.md) so Windows does not have to compile AvaFrame.
+# separately (see SETUP.md). After activating this env, compile AvaFrame's
+# Cython extensions in place:
+#   cd ../AvaFrame && python setup.py build_ext --inplace
+# Do not pip install avaframe. That install pins numpy<2 and fights this env.
 
 name: autoates-workshop
 channels:
@@ -25,6 +28,15 @@ dependencies:
   - scikit-image
   - jupyterlab
   - ipywidgets
+  # Imported when com4FlowPy loads. cython builds DFAfunctionsCython.
+  - cmcrameri
+  - contextily
+  - cython
+  - deepdiff
+  - deepmerge
+  - pyshp
+  - seaborn
+  - tabulate
   - pip
   - pip:
     - ipykernel

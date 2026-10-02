@@ -19,10 +19,13 @@ These instructions assume you may not have used conda before.
 | **autoATES v3.0** | The mapping library (ISSW public snapshot) | PRA and the ATES classifier |
 | **AvaFrame** | Contains com4FlowPy | Runout |
 
-We clone autoATES and AvaFrame next to the workshop folder. We avoid
-`pip install` of AvaFrame from source on the day, because that compile
-step often fails on Windows. The notebooks add those clones to Python’s
-path instead.
+We clone autoATES and AvaFrame next to the workshop folder. The notebooks
+add those clones to Python’s path. Do not `pip install avaframe`. That
+install pulls its own pins, including `numpy<2`, and fights this conda
+environment. This AvaFrame pin still needs one local compile.
+`com4FlowPy` imports `DFAfunctionsCython`, and a git clone only has the
+`.pyx` source until you build it. Section 3 does that build inside the
+conda environment.
 
 ## What you need
 
@@ -31,6 +34,13 @@ path instead.
 - About 5 GB free disk.
 - Windows, macOS, or Linux. Windows is usually the fussiest because of
   GDAL. If you already use WSL2, that is a good option.
+- A C/C++ compiler, for the AvaFrame build in section 3:
+  - Linux: `gcc` and `g++`. On Ubuntu, Debian, or Mint:
+    `sudo apt install build-essential`
+  - macOS: Xcode command-line tools (`xcode-select --install`)
+  - Windows: Microsoft C++ Build Tools, with the workload
+    “Desktop development with C++”. Run the build from the
+    **Miniforge Prompt**, not Git Bash.
 
 If you can, put the project in a path **without spaces**:
 
@@ -104,11 +114,43 @@ first run downloads a few hundred MB and can take 10–20 minutes. Hotel
 wifi on Saturday morning is a poor time to start that download, so please
 do this before you travel if you can.
 
+If you already have Anaconda, still install Miniforge and run these
+commands in a Miniforge terminal. Anaconda’s older solver can run out of
+memory on this file, and `conda activate` from an Anaconda `(base)` prompt
+will not see this environment.
+
 Windows: if `conda` is not found, open **Miniforge Prompt** and try again.
 Avoid putting OSGeo4W on PATH in that same window; mixed GDAL installs
 are a common source of `import rasterio` failures.
 
-## 3. Check that it worked
+If `conda activate` says the shell is not initialized:
+
+```bash
+source ~/miniforge3/bin/activate
+conda activate autoates-workshop
+```
+
+## 3. Build AvaFrame’s Flow-Py extension
+
+Stay in the `autoates-workshop` environment. A plain clone cannot import
+`com4FlowPy` until this extension is compiled. Do not run
+`pip install avaframe`.
+
+```bash
+cd ../AvaFrame
+python setup.py build_ext --inplace
+cd ../issw2026-autoates-workshop
+```
+
+The build may print a warning about MoT-Voellmy. Saturday does not use
+that module. The build worked if `avaframe/com1DFA/` contains a
+`DFAfunctionsCython` file ending in `.so` (Linux, macOS) or `.pyd`
+(Windows).
+
+If the compiler is missing, install it (see “What you need” above) and
+run the build commands again.
+
+## 4. Check that it worked
 
 Still in the `autoates-workshop` environment, from the workshop repo folder:
 
@@ -131,9 +173,10 @@ To look at a map: Layer → Add Raster →
 `data/05_ates/outputs_reference/ATES_classification.tif`, then Layer
 Properties → Symbology → Style → Load → `qgis/ates_classes.qml`.
 
-## 4. What “done” looks like
+## 5. What “done” looks like
 
 - [ ] `conda activate autoates-workshop` works
+- [ ] `python setup.py build_ext --inplace` has been run in `AvaFrame`
 - [ ] `python check_setup.py` prints only `OK` lines
 - [ ] JupyterLab opens `00_orientation.ipynb` with the workshop kernel
 - [ ] QGIS opens
@@ -170,8 +213,12 @@ The full error:
 
 Please help me fix the install. Prefer conda-forge packages. Avoid mixing
 pip-installed GDAL/rasterio with conda GDAL. Avoid putting OSGeo4W on PATH
-together with this environment. Prefer a clone of AvaFrame on PYTHONPATH
-over compiling AvaFrame from source.
+together with this environment. Do not pip install avaframe. If the error
+is "No module named avaframe.com1DFA.DFAfunctionsCython", run
+"python setup.py build_ext --inplace" in the AvaFrame clone, inside the
+autoates-workshop environment. If the error is a missing module such as
+deepmerge, contextily, or tabulate, install that package from conda-forge
+into autoates-workshop. Do not downgrade numpy to 1.x.
 ```
 
 If it is still stuck:
@@ -199,8 +246,17 @@ rasters rather than waiting through the block.
 
 ## A few things that tend to go wrong
 
+- Creating this environment with an old Anaconda `(base)`. Conda 22’s
+  classic solver can be killed after using tens of GB of RAM. Install
+  Miniforge and create the env from a Miniforge terminal.
+- `pip install avaframe`, or `pip install rasterio` / `pip install gdal`
+  on top of conda.
+- Skipping the AvaFrame build in section 3.
+  `ModuleNotFoundError: avaframe.com1DFA.DFAfunctionsCython` means that
+  build has not been run. `deepmerge`, `contextily`, `tabulate`, or
+  `shapefile` means the environment was created from an older
+  `environment.yml`.
 - Mixing this conda env, a system Python, and OSGeo4W in one terminal.
-- `pip install rasterio` or `pip install gdal` on top of conda.
 - Cloning a private development copy of autoATES instead of
   **`autoATES-v3.0-issw`**. The workshop repo is the lesson; that
   snapshot is the library.
