@@ -1,26 +1,19 @@
 # Week-of reminder
 
-Send Monday 28 September (or the Monday before ISSW). Short.
+Hello everyone,
 
----
+Looking forward to seeing you on Saturday for the autoATES v3.0 workshop.
 
-Subject: Reminder — Saturday autoATES workshop, 09:00 Peak Room
+A few quick reminders:
 
-A reminder that the autoATES workshop is Saturday 09:00–16:00, Aava
-Hotel Peak Room.
+Saturday 3 October, 09:00-16:00
+Aava Hotel Peak Room, Whistler
+If you plan to run the notebooks yourself, please try the installation beforehand using the workshop repository instructions.
+USB copies of the data will be available from 08:15.
+If your setup is not working, please still come. You can follow along on the projector and run the notebooks later.
 
-If you planned to follow along on a laptop, please run
-`python check_setup.py` in the `autoates-workshop` conda environment
-before you travel. SETUP.md is in the repo:
-https://github.com/AutoATES/issw2026-autoates-workshop
+We'll start with a completed Connaught Creek ATES map and work through the full workflow during the day.
 
-If that script is still failing, please still come — you can follow on
-the projector. Helpers will be in the room from 08:15 with USB copies.
-Conference wifi is often too slow to finish a conda install on the
-morning.
+See you Saturday,
 
-Timetable is in SCHEDULE.md (welcome 09:00, forest until lunch, PRA /
-Flow-Py / ATES in the afternoon).
-
-See you Saturday.
 John
