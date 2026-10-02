@@ -123,12 +123,17 @@ Windows: if `conda` is not found, open **Miniforge Prompt** and try again.
 Avoid putting OSGeo4W on PATH in that same window; mixed GDAL installs
 are a common source of `import rasterio` failures.
 
-If `conda activate` says the shell is not initialized:
+If the prompt still says `(base)`, or `conda` says the environment does
+not exist or the shell is not initialized, the `conda` on your `PATH` is
+still Anaconda. On macOS or Linux:
 
 ```bash
 source ~/miniforge3/bin/activate
 conda activate autoates-workshop
 ```
+
+On Windows, close the Anaconda prompt and run the same activate command
+from the **Miniforge Prompt**.
 
 ## 3. Build AvaFrame’s Flow-Py extension
 
