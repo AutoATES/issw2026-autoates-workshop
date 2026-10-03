@@ -12,7 +12,8 @@ This repository is the participant kit: notebooks, the Connaught Creek
 dataset, reference outputs for each step, and the schedule. It is separate
 from the research tree used to build the western Canada production maps.
 
-**If you want to run the models:** start with [SETUP.md](SETUP.md).  
+**If you want to run the models:** start with [SETUP.md](SETUP.md), or
+with [DOCKER.md](DOCKER.md) if you have Docker (fastest).  
 **If you want the day plan:** [SCHEDULE.md](SCHEDULE.md).  
 **Email to participants:** [participant/EMAIL.md](participant/EMAIL.md).
 
