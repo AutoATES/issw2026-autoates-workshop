@@ -24,8 +24,8 @@ ARG AVAFRAME_REPO=https://github.com/OpenNHM/AvaFrame.git
 ARG AVAFRAME_REF=c745a2dec4a7978ac9a8ef100068fae7f6db6d13
 
 USER root
-RUN mkdir -p /opt/autoATES-v3.0-issw /opt/AvaFrame && \
-    chown $MAMBA_USER:$MAMBA_USER /opt/autoATES-v3.0-issw /opt/AvaFrame
+RUN mkdir -p /opt/autoATES-v3.0-issw /opt/AvaFrame && touch /opt/PINS && \
+    chown $MAMBA_USER:$MAMBA_USER /opt/autoATES-v3.0-issw /opt/AvaFrame /opt/PINS
 USER $MAMBA_USER
 
 RUN set -e; \
