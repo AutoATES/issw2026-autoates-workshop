@@ -33,7 +33,7 @@ safest.
 ## 3. Start it
 
 ```bash
-docker compose pull      # downloads the prebuilt image (~2 GB), once
+docker compose pull      # downloads the prebuilt image (~1 GB compressed, 3.6 GB on disk), once
 docker compose up
 ```
 
@@ -82,7 +82,7 @@ Intel/AMD machines get `linux/amd64`.
 
 | Symptom | Fix |
 |---|---|
-| `port is already allocated` | Something else uses 8888 (another Jupyter). Stop it, or change the left side of `127.0.0.1:8888:8888` in `docker-compose.yml`. |
+| `port is already allocated` / `address already in use` | Something else uses 8888 (often a Jupyter you started outside Docker). Stop it, or run `JUPYTER_PORT=8899 docker compose up` and open http://localhost:8899. |
 | Flow-Py cell dies / kernel restarts | Raise Docker Desktop memory (step 1). Or copy that module's `outputs_reference/`. |
 | `Permission denied` writing outputs (Linux) | Start with `HOST_UID=$(id -u) HOST_GID=$(id -g)` as above. |
 | `denied` or `unauthorized` on `docker compose pull` | The image is not public yet; use `docker compose build`. |

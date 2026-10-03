@@ -8,7 +8,8 @@ services:
     image: ghcr.io/avalanche-savvy/issw2026-autoates-workshop:latest
     build: .
     ports:
-      - "127.0.0.1:8888:8888"
+      # Change the host port with JUPYTER_PORT=8899 docker compose up if 8888 is busy.
+      - "127.0.0.1:${JUPYTER_PORT:-8888}:8888"
     volumes:
       # Your clone of this repo: notebook edits and outputs stay on your disk,
       # where QGIS can open them.
