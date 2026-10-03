@@ -252,7 +252,7 @@ async function main() {
     title: "Infrequent sets the envelope. A floor cannot be averaged down.",
     name: "ates_finished",
     page: 10, n: N,
-    note: "Live call is atesCore. Paper hybrid is atesValidation. Class 0 is a safety decision. Discuss next to the expert overlay; do not score as an exam.",
+    note: "This raster is dev8: split votes, then reach floors. Class 0 is a safety decision. Discuss next to the expert overlay; do not score as an exam.",
   });
 
   // 11 Classifier rules

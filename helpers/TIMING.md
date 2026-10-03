@@ -14,7 +14,7 @@ Pins: AutoATES `adb83f616576`, AvaFrame `c745a2dec4a7`, Flow-Py `engine=numba`.
 | **Total** | **~5 s** |
 
 Grid: 259 × 260. Treeline from canopy: 1979 m.  
-ATES class share on valid cells (approx.): 0 8%, 1 29%, 2 21%, 3 36%, 4 6%.
+ATES class share on valid cells, dev8 reference of 2 Oct 2026: 0 1%, 1 11%, 2 24%, 3 55%, 4 9%.
 
 Without numba, budget ~20× on Flow-Py (~30–40 s here; still inside the
 afternoon block on a mid-range laptop). The 5 m lidar comparison stack is

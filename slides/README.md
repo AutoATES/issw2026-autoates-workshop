@@ -29,3 +29,23 @@ cd slides && node build_observer_deck.js
 `build_observer_deck.js` requires `pptxgenjs` (the comparison-repo
 `paper/poster/node_modules` path is hardcoded until this repo has its
 own install).
+
+## Afternoon opener
+
+`ISSW2026_autoATES_v3_afternoon.pptx` — 10 slides, same 13.3 × 7.5 in
+frame. For the start of the 13:00 block, after a BFW introduction to
+autoATES. Poster figures live in `figures/poster/`.
+
+| Slide | Point |
+|---|---|
+| 1 | What changed in v3.0 |
+| 2 | Two parallel tracks |
+| 3 | PRA envelope, including below 30° |
+| 4–5 | Validation, and how to use the Connaught overlay |
+| 6–7 | Classifier: floors, then the average |
+| 8–9 | The two PRA layers, then the Connaught map |
+| 10 | The rest of the afternoon |
+
+```bash
+node build_afternoon_deck.js
+```
