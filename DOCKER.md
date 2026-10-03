@@ -209,8 +209,15 @@ Nothing outside that folder changes.
 
 ## If the download does not work
 
-Build the image yourself from the same folder (needs internet for 10–20
-minutes):
+First try the copy on Docker Hub (same image):
+
+- macOS / Linux: `WORKSHOP_IMAGE=docker.io/surfjedi/issw2026-autoates-workshop:latest docker compose pull`
+- Windows PowerShell: `$env:WORKSHOP_IMAGE="docker.io/surfjedi/issw2026-autoates-workshop:latest"; docker compose pull`
+
+Keep the same `WORKSHOP_IMAGE` setting when you run `docker compose up`.
+
+Otherwise build the image yourself from the same folder (needs internet for
+10–20 minutes):
 
 ```bash
 docker compose build
@@ -228,7 +235,8 @@ Then continue with `docker compose up` as above.
 | Flow-Py cell dies / kernel restarts | Not enough memory: raise it (macOS step 5, Windows step 4). Or copy that module's `outputs_reference/` folder and carry on. |
 | `Permission denied` writing outputs (Linux) | Start with `HOST_UID=$(id -u) HOST_GID=$(id -g) docker compose up` as in step 3. |
 | `no configuration file provided: not found` | You are not in the repository folder, or you are on `main` instead of the `docker` branch (step 2). |
-| `denied` / `unauthorized` on `docker compose pull` | Run `docker logout ghcr.io` and pull again, or build it yourself (above). |
+| `denied` / `unauthorized` on `docker compose pull` | Run `docker logout ghcr.io` and pull again, or use the Docker Hub copy (above). |
+| `toomanyrequests` from Docker Hub | Docker Hub's limit for anonymous downloads on a shared connection. Use the default GHCR image, or `docker login` with a free Docker Hub account first. |
 | Windows: `WSL 2 installation is incomplete` | Run `wsl --update` in PowerShell, then restart Docker Desktop. |
 | Windows: virtualization not enabled | Enable virtualization (Intel VT-x / AMD-V, sometimes called SVM) in the BIOS/UEFI settings, then try again. |
 | Very slow on Windows | Clone the repository inside WSL (`wsl`, then `cd ~` and clone there) and run `docker compose up` from that WSL shell. |
@@ -249,10 +257,10 @@ at 08:15, or use the conda route in [SETUP.md](SETUP.md).
   - `ghcr.io/surfjedi/issw2026-autoates-workshop` (the `docker-compose.yml`
     default, public): secret `GHCR_MIRROR_TOKEN` (classic PAT,
     `write:packages`) + variable `GHCR_MIRROR_OWNER`.
-  - `docker.io/<user>/issw2026-autoates-workshop` (optional): secret
+  - `docker.io/surfjedi/issw2026-autoates-workshop` (public backup): secret
     `DOCKERHUB_TOKEN` (Docker Hub access token, Read & Write) + variable
     `DOCKERHUB_USERNAME`. Use with
-    `WORKSHOP_IMAGE=docker.io/<user>/issw2026-autoates-workshop:latest docker compose pull`.
+    `WORKSHOP_IMAGE=docker.io/surfjedi/issw2026-autoates-workshop:latest docker compose pull`.
     Docker Hub limits anonymous pulls per IP, so a room on one hotel
     connection should prefer GHCR.
 - Library pins are build args in the `Dockerfile` (`AUTOATES_REF`,
