@@ -94,6 +94,14 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-24.04
+    env:
+      # Optional public mirrors (the fork's own GHCR package can't be made public).
+      #   Docker Hub:    secret DOCKERHUB_TOKEN + variable DOCKERHUB_USERNAME
+      #   personal GHCR: secret GHCR_MIRROR_TOKEN (PAT, write:packages) + variable GHCR_MIRROR_OWNER
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+      GHCR_MIRROR_TOKEN: ${{ secrets.GHCR_MIRROR_TOKEN }}
+      GHCR_MIRROR_OWNER: ${{ vars.GHCR_MIRROR_OWNER }}
     steps:
       - name: Image name (lowercase)
         run: echo "IMAGE=${REGISTRY}/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
@@ -130,3 +138,19 @@ jobs:
             $(printf "${IMAGE}@sha256:%s " *)
 
       - run: docker buildx imagetools inspect "${IMAGE}:sha-${GITHUB_SHA::7}"
+
+      - name: Mirror to Docker Hub
+        if: env.DOCKERHUB_TOKEN != '' && env.DOCKERHUB_USERNAME != '' && steps.meta.outputs.tags != ''
+        run: |
+          echo "$DOCKERHUB_TOKEN" | docker login docker.io -u "$DOCKERHUB_USERNAME" --password-stdin
+          DST="docker.io/${DOCKERHUB_USERNAME,,}/issw2026-autoates-workshop"
+          docker buildx imagetools create $(for t in $(jq -r '.tags[]' <<< "$DOCKER_METADATA_OUTPUT_JSON"); do
+            echo "-t $DST:${t##*:}"; done) "${IMAGE}:sha-${GITHUB_SHA::7}"
+
+      - name: Mirror to personal GHCR
+        if: env.GHCR_MIRROR_TOKEN != '' && env.GHCR_MIRROR_OWNER != ''
+        run: |
+          echo "$GHCR_MIRROR_TOKEN" | docker login ghcr.io -u "$GHCR_MIRROR_OWNER" --password-stdin
+          DST="ghcr.io/${GHCR_MIRROR_OWNER,,}/issw2026-autoates-workshop"
+          docker buildx imagetools create $(for t in $(jq -r '.tags[]' <<< "$DOCKER_METADATA_OUTPUT_JSON"); do
+            echo "-t $DST:${t##*:}"; done) "${IMAGE}:sha-${GITHUB_SHA::7}"

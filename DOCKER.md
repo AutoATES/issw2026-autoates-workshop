@@ -85,7 +85,8 @@ Intel/AMD machines get `linux/amd64`.
 | `port is already allocated` / `address already in use` | Something else uses 8888 (often a Jupyter you started outside Docker). Stop it, or run `JUPYTER_PORT=8899 docker compose up` and open http://localhost:8899. |
 | Flow-Py cell dies / kernel restarts | Raise Docker Desktop memory (step 1). Or copy that module's `outputs_reference/`. |
 | `Permission denied` writing outputs (Linux) | Start with `HOST_UID=$(id -u) HOST_GID=$(id -g)` as above. |
-| `denied` or `unauthorized` on `docker compose pull` | The image is not public yet; use `docker compose build`. |
+| `denied` or `unauthorized` on `docker compose pull` | Try the Docker Hub copy (`WORKSHOP_IMAGE=docker.io/…` above), or build it yourself with `docker compose build`. |
+| `toomanyrequests` from Docker Hub | Anonymous pull limit on a shared connection; use the GHCR default, or `docker login` first. |
 | Windows: files not visible in the container | Share the drive in Docker Desktop → Settings → Resources → File sharing, or clone into your WSL home. |
 
 ## Maintainers
@@ -94,8 +95,16 @@ Intel/AMD machines get `linux/amd64`.
   native runners, runs `check_setup.py` and a JupyterLab smoke test in each,
   and pushes `ghcr.io/avalanche-savvy/issw2026-autoates-workshop:latest`
   (plus `:sha-…` and branch tags).
-- After the first push, make the package public: GitHub → the org's
-  Packages → `issw2026-autoates-workshop` → Package settings → Change
-  visibility → Public.
+- The fork's own package (`ghcr.io/avalanche-savvy/...`) cannot be made
+  public, so the publish job also mirrors each build to public copies:
+  - `ghcr.io/surfjedi/issw2026-autoates-workshop` (compose default) —
+    secret `GHCR_MIRROR_TOKEN` (classic PAT, `write:packages`) + variable
+    `GHCR_MIRROR_OWNER`. Make that package public once, after the first push
+    (github.com/surfjedi → Packages → Package settings → Change visibility).
+  - `docker.io/<user>/issw2026-autoates-workshop` — secret `DOCKERHUB_TOKEN`
+    (Docker Hub access token, Read & Write) + variable `DOCKERHUB_USERNAME`.
+    Use it with `WORKSHOP_IMAGE=docker.io/<user>/issw2026-autoates-workshop:latest docker compose pull`.
+    Docker Hub limits anonymous pulls per IP, so a room on one hotel
+    connection should prefer GHCR.
 - Library pins are build args in the `Dockerfile` (`AUTOATES_REF`,
   `AVAFRAME_REF`, full SHAs); `/opt/PINS` in the image records them.

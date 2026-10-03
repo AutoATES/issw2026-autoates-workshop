@@ -5,7 +5,8 @@
 #
 services:
   workshop:
-    image: ghcr.io/avalanche-savvy/issw2026-autoates-workshop:latest
+    # Public copy on GHCR. Docker Hub mirror: WORKSHOP_IMAGE=docker.io/<user>/issw2026-autoates-workshop:latest
+    image: ${WORKSHOP_IMAGE:-ghcr.io/surfjedi/issw2026-autoates-workshop:latest}
     build: .
     ports:
       # Change the host port with JUPYTER_PORT=8899 docker compose up if 8888 is busy.
